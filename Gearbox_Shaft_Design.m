@@ -1,6 +1,6 @@
 function [ResultsTable, OuterLog, IterationHistory] = shaft_design_from_csv(csvFile)
 % ========================================================================
-% SHAFT DIAMETER DESIGN (FATIGUE) - TWO SHAFTS / AUTOMATIC FILLET UPDATE
+% SHAFT DIAMETER DESIGN (FATIGUE) - AUTOMATIC FILLET UPDATE
 % ------------------------------------------------------------------------
 % Input CSV columns:
 %   Section, Shaft, r_initial_mm, d_guess_mm, Ma_Nm, Mm_Nm, Ta_Nm, Tm_Nm
@@ -9,15 +9,11 @@ function [ResultsTable, OuterLog, IterationHistory] = shaft_design_from_csv(csvF
 % For every non-terminal section:
 %   r_geom_max = abs(D_left - D_right)/2
 % The rightmost section of each shaft has r = 0.
-%
-% Original fatigue equations and original Bisection sizing method are kept.
 % Outer loop uses continuous radius relaxation. At the end, fillet radii
 % are selected from a preferred standard-radius series, always rounding
 % DOWN so the selected fillet does not exceed its geometric maximum.
-%
 % OUTPUT:
 %   Clean, fixed-width report in the MATLAB Command Window.
-%   No output CSV files are written.
 %   Tables are also returned to the MATLAB workspace if requested.
 % ========================================================================
 
